@@ -3,6 +3,7 @@ package com.buaa.tezlikai.smartsh;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.WindowManager;
 
 import com.buaa.tezlikai.smartsh.impl.ContentFragment;
 import com.buaa.tezlikai.smartsh.impl.LeftMenuFragment;
@@ -27,8 +28,12 @@ public class MainActivity extends SlidingFragmentActivity {
         SlidingMenu slidingMenu = getSlidingMenu();
         //全屏触摸
         slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-        //屏幕预留400像素
-        slidingMenu.setBehindOffset(400);
+
+        WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
+        int width = wm.getDefaultDisplay().getWidth();
+
+        //屏幕预留像素()
+        slidingMenu.setBehindOffset((int) (width * 0.625));//做一下代码适配
 
         initFragment();
     }
@@ -45,7 +50,6 @@ public class MainActivity extends SlidingFragmentActivity {
         transaction.replace(R.id.fl_content, new ContentFragment(), TAG_CONTENT);
         transaction.commit();//提交事务
     }
-
 
     /**
      * 获取侧边栏对象
