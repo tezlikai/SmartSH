@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.buaa.tezlikai.smartsh.utils.DensityUtils;
 import com.buaa.tezlikai.smartsh.utils.PrefUtils;
 
 import java.util.ArrayList;
@@ -60,7 +61,7 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
             pointView.setImageResource(R.drawable.shape_circle_default);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             if (i>0){
-                params.leftMargin = 10;//从第二个点开始设置边距
+                params.leftMargin = DensityUtils.dp2px(8,this);//从第二个点开始设置边距
             }
             pointView.setLayoutParams(params);
             llContainer.addView(pointView);
